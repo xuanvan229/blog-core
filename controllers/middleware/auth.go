@@ -8,9 +8,9 @@ import (
 	"github.com/dgrijalva/jwt-go/v4"
 	"github.com/gin-gonic/gin"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/config"
-	"github.com/daystram/go-gin-gorm-boilerplate/constants"
-	"github.com/daystram/go-gin-gorm-boilerplate/datatransfers"
+	"github.com/xuanvan229/blog-core/config"
+	"github.com/xuanvan229/blog-core/constants"
+	"github.com/xuanvan229/blog-core/datatransfers"
 )
 
 func AuthMiddleware(c *gin.Context) {
@@ -25,8 +25,9 @@ func AuthMiddleware(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, datatransfers.Response{Error: err.Error()})
 		return
 	}
-	c.Set(constants.IsAuthenticatedKey, true)
+	fmt.Println("claims", claims.ID)
 	c.Set(constants.UserIDKey, claims.ID)
+	c.Set(constants.IsAuthenticatedKey, true)
 	c.Next()
 }
 

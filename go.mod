@@ -1,4 +1,4 @@
-module github.com/daystram/go-gin-gorm-boilerplate
+module github.com/xuanvan229/blog-core
 
 go 1.16
 

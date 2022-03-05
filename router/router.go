@@ -3,9 +3,9 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/controllers/middleware"
-	"github.com/daystram/go-gin-gorm-boilerplate/controllers/v1"
-	"github.com/daystram/go-gin-gorm-boilerplate/utils"
+	"github.com/xuanvan229/blog-core/controllers/middleware"
+	v1 "github.com/xuanvan229/blog-core/controllers/v1"
+	"github.com/xuanvan229/blog-core/utils"
 )
 
 func InitializeRouter() (router *gin.Engine) {
@@ -25,6 +25,11 @@ func InitializeRouter() (router *gin.Engine) {
 		{
 			user.GET("/:username", utils.AuthOnly, v1.GETUser)
 			user.PUT("", utils.AuthOnly, v1.PUTUser)
+		}
+		post := v1route.Group("/post")
+		{
+			post.GET("", utils.AuthOnly, v1.GetAll)
+			post.POST("", utils.AuthOnly, v1.CreatePost)
 		}
 	}
 	return

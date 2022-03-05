@@ -9,10 +9,10 @@ import (
 	"github.com/dgrijalva/jwt-go/v4"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/config"
-	"github.com/daystram/go-gin-gorm-boilerplate/constants"
-	"github.com/daystram/go-gin-gorm-boilerplate/datatransfers"
-	"github.com/daystram/go-gin-gorm-boilerplate/models"
+	"github.com/xuanvan229/blog-core/config"
+	"github.com/xuanvan229/blog-core/constants"
+	"github.com/xuanvan229/blog-core/datatransfers"
+	"github.com/xuanvan229/blog-core/models"
 )
 
 func (m *module) AuthenticateUser(credentials datatransfers.UserLogin) (token string, err error) {

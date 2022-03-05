@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/datatransfers"
-	"github.com/daystram/go-gin-gorm-boilerplate/handlers"
+	"github.com/xuanvan229/blog-core/datatransfers"
+	"github.com/xuanvan229/blog-core/handlers"
 )
 
 func POSTLogin(c *gin.Context) {
@@ -33,6 +33,7 @@ func POSTRegister(c *gin.Context) {
 		return
 	}
 	if err = handlers.Handler.RegisterUser(user); err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusUnauthorized, datatransfers.Response{Error: "failed registering user"})
 		return
 	}

@@ -5,10 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/constants"
-	"github.com/daystram/go-gin-gorm-boilerplate/datatransfers"
-	"github.com/daystram/go-gin-gorm-boilerplate/handlers"
-	"github.com/daystram/go-gin-gorm-boilerplate/models"
+	"github.com/xuanvan229/blog-core/constants"
+	"github.com/xuanvan229/blog-core/datatransfers"
+	"github.com/xuanvan229/blog-core/handlers"
+	"github.com/xuanvan229/blog-core/models"
 )
 
 func GETUser(c *gin.Context) {

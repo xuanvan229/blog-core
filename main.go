@@ -8,9 +8,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/config"
-	"github.com/daystram/go-gin-gorm-boilerplate/handlers"
-	"github.com/daystram/go-gin-gorm-boilerplate/router"
+	"github.com/xuanvan229/blog-core/config"
+	"github.com/xuanvan229/blog-core/handlers"
+	"github.com/xuanvan229/blog-core/router"
 )
 
 func init() {

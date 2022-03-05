@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/datatransfers"
-	"github.com/daystram/go-gin-gorm-boilerplate/models"
+	"github.com/xuanvan229/blog-core/datatransfers"
+	"github.com/xuanvan229/blog-core/models"
 )
 
 func (m *module) RetrieveUser(username string) (user models.User, err error) {

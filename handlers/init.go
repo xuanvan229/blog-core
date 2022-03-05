@@ -7,9 +7,9 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/daystram/go-gin-gorm-boilerplate/config"
-	"github.com/daystram/go-gin-gorm-boilerplate/datatransfers"
-	"github.com/daystram/go-gin-gorm-boilerplate/models"
+	"github.com/xuanvan229/blog-core/config"
+	"github.com/xuanvan229/blog-core/datatransfers"
+	"github.com/xuanvan229/blog-core/models"
 )
 
 var Handler HandlerFunc
@@ -17,9 +17,10 @@ var Handler HandlerFunc
 type HandlerFunc interface {
 	AuthenticateUser(credentials datatransfers.UserLogin) (token string, err error)
 	RegisterUser(credentials datatransfers.UserSignup) (err error)
-
 	RetrieveUser(username string) (user models.User, err error)
 	UpdateUser(id uint, user datatransfers.UserUpdate) (err error)
+	CreatePost(id uint, credentials datatransfers.PostCreate) (err error)
+	GetAllPost(id uint) (posts []datatransfers.PostInfor, err error)
 }
 
 type module struct {
@@ -29,6 +30,7 @@ type module struct {
 type dbEntity struct {
 	conn      *gorm.DB
 	userOrmer models.UserOrmer
+	postOrmer models.PostOrmer
 }
 
 func InitializeHandler() (err error) {
@@ -44,12 +46,14 @@ func InitializeHandler() (err error) {
 		return
 	}
 	log.Println("[INIT] connected to PostgreSQL")
+	db.AutoMigrate(&models.User{})
 
 	// Compose handler modules
 	Handler = &module{
 		db: &dbEntity{
 			conn:      db,
 			userOrmer: models.NewUserOrmer(db),
+			postOrmer: models.NewPostOrmer(db),
 		},
 	}
 	return
